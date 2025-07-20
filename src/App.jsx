@@ -3,9 +3,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Terms from "./components/Terms";
 import Privacy from "./components/Privacy";
+import Scroll from "./components/Scroll"; // <-- Import
+
 const App = () => {
   return (
-    <div className="h-screen bg-gray-950">
+    <div className="bg-gray-950">
+      <Scroll />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
