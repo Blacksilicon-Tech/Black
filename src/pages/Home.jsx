@@ -44,13 +44,6 @@ const Home = () => {
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-6 font-medium">
             Welcome to <span className="text-orange-500 font-semibold">Black Silicon</span>, your premier partner in information technology solutions.
           </p>
-          <motion.button
-            className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Started
-          </motion.button>
         </motion.div>
       </section>
 
