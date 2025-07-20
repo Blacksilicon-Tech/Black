@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-300 mb-6">
         {/* Logo & Name */}
         <div className="">
-          <Link to="/">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <img className="w-20" src={assets.black_logo} alt="Black Silicon Logo" />
           <h1 className="text-2xl font-serif mt-2">Black Silicon</h1>
           </Link>
