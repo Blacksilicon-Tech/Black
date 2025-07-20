@@ -1,28 +1,82 @@
-import { assets } from '../assets/assets'
+import { useState } from "react";
+import { assets } from "../asset/assets";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
-  return (
-    <>
-      <div className='w-full flex justify-between items-center font-semibold'>
-        <div className='flex items-center gap-2 '>
-            <img className='w-10 p-2 cursor-pointer rounded-full bg-transparent border-transparent' src={assets.home_icon} alt="" />
-            <div className="flex items-center flex-grow mx-2 bg-transparent"><img className="w-6 h-6 mr-2 cursor-pointer" src={assets.search_icon} alt="Search"/><input type="text" placeholder="What do you want to play?" className="bg-transparent text-white placeholder-gray-400 outline-none w-full"/>
-            <hr className='rotate-90 w-8'/>
-            </div>
-        </div>
-        <div className='flex items-center gap-4'>
-            <p className='bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer'>Explore Premium</p>
-            <p className='bg-black py-1 px-3 rounded-2xl text-[15px] cursor-pointer'>Install App</p>
-            <p className='bg-purple-500 text-black w-7 h-7 rounded-full flex items-center justify-center'>S</p>
-        </div>
-      </div>
-      <div className='flex items-center gap-2 mt-4'>
-        <p className='bg-white text-black px-4 py-1 rounded-2xl'>All</p>
-        <p className='bg-black px-4 py-1 rounded-2xl cursor-pointer'>Music</p>
-        <p className='bg-black px-4 py-1 rounded-2xl cursor-pointer'>Podcasts</p>
-      </div>
-    </>
-  )
-}
+  const [visible, setVisible] = useState(false);
 
-export default Navbar
+
+  return (
+    <div className="flex items-center justify-between py-5 font-medium">
+      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
+        <Link
+          onClick={() => setVisible(false)}
+          to="/"
+          className="flex flex-col items-center gap-1"
+        >
+          <p className="font-extrabold hover:text-white">HOME</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+        </Link>
+        <Link
+          onClick={() => setVisible(false)}
+          to="/about"
+          className="flex flex-col items-center gap-1"
+        >
+          <p className="font-extrabold pr-10 hover:text-white">ABOUT</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+        </Link>
+      </ul>
+
+      <div className="flex items-center gap-6 mr-5">
+        <div className="group relative">
+          <div className="hidden group-hover:block absolute right-0 dropdown-menu pt-4">
+          </div>
+        </div>
+        <img
+          onClick={() => setVisible(true)}
+          src={assets.menu_icon}
+          className="w-5 cursor-pointer sm:hidden"
+          alt="Menu Icon"
+        />
+      </div>
+
+      {/* Sidebar Menu */}
+      <div
+        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${
+          visible ? "w-full" : "w-0"
+        }`}
+      >
+        <div className="flex flex-col text-gray-600">
+          <div
+            onClick={() => setVisible(false)}
+            className="flex items-center gap-4 p-3 cursor-pointer"
+          >
+            <img
+              className="h-4 rotate-180"
+              src={assets.dropdown_icon}
+              alt="Back Icon"
+            />
+            <p>Back</p>
+          </div>
+          <Link
+            onClick={() => setVisible(false)}
+            className="py-2 pl-6 border"
+            to="/"
+          >
+            HOME
+          </Link>
+          <Link
+            onClick={() => setVisible(false)}
+            className="py-2 pl-6 border"
+            to="/about"
+          >
+            ABOUT
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
